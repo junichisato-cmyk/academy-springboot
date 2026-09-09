@@ -15,6 +15,10 @@ public class UserRegistrationRequest {
 
     @NotBlank(message = "メールアドレスは必ず入力してください")
     @Email(message = "メールアドレスが正しい形式ではありません")
+    @Pattern(
+        regexp = "^$|^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+        message = "メールアドレスが正しい形式ではありません"
+    )
     private String email;
 
     @NotBlank(message = "パスワードは必ず入力してください")
