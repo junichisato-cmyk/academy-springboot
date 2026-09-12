@@ -23,4 +23,11 @@ public interface UserMapper {
         WHERE email = #{email}
         """)
     int countByEmail(String email);
+
+    @Select("""
+        SELECT id, name, email, password
+        FROM users
+        WHERE email = #{email}
+        """)
+    User findByEmail(String email);
 }
