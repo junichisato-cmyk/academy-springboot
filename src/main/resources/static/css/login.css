@@ -1,0 +1,155 @@
+main {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin: 80px 0 80px;
+
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 0;
+
+    text-align: center;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+form {
+    position: relative;
+
+    width: 480px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
+.form-group {
+    position: relative;
+
+    width: 480px;
+    height: 48px;
+}
+
+.field-control {
+    position: relative;
+
+    width: 480px;
+    height: 48px;
+}
+
+label {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    margin: 0;
+
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0.15px;
+
+    color: rgba(0, 0, 0, 0.54);
+}
+
+input {
+    position: absolute;
+    top: 21.5px;
+    left: 0;
+
+    width: 100%;
+    height: 19px;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    outline: none;
+
+    background-color: transparent;
+
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.15px;
+
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.field-control::after {
+    content: "";
+
+    position: absolute;
+    top: 47px;
+    left: 0;
+
+    width: 480px;
+    height: 1px;
+
+    background-color: rgba(0, 0, 0, 0.42);
+}
+
+.field-control:focus-within::after {
+    height: 2px;
+
+    background-color: #000000;
+}
+
+.error-message {
+    position: absolute;
+    top: -32px;
+    left: 0;
+
+    margin: 0;
+
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+
+    color: red;
+}
+
+.login-button,
+.register-button {
+    width: 268px;
+    height: 53px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 16px 80px;
+
+    border: none;
+    border-radius: 4px;
+
+    background-color: #1B5678;
+
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    color: #FFFFFF;
+
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.register-button {
+    text-decoration: none;
+}

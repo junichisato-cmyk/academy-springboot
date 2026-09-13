@@ -11,9 +11,11 @@ import com.spring.springbootapplication.mapper.UserMapper;
 public class UserService {
 
     private final UserMapper userMapper;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     public UserService(UserMapper userMapper) {
         this.userMapper = userMapper;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
     public boolean existsByEmail(String email) {
@@ -22,14 +24,27 @@ public class UserService {
 
     public User register(UserRegistrationRequest request) {
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
         User user = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         userMapper.insert(user);
+
+        return user;
+    }
+
+    public User login(String email, String password) {
+
+        User user = userMapper.findByEmail(email);
+
+        if (user == null) {
+            return null;
+        }
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            return null;
+        }
 
         return user;
     }
