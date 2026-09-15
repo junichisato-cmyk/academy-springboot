@@ -3,12 +3,14 @@
 
 <body>
 
-<header th:fragment="header">
+<header th:fragment="header(showLogin)">
     <p class="logo">My Portfolio</p>
 
-    <button type="button" class="login-button">
+    <a th:if="${showLogin}"
+       th:href="@{/login}"
+       class="login-button">
         ログイン
-    </button>
+    </a>
 </header>
 
 </body>
