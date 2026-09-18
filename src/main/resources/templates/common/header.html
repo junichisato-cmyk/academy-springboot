@@ -11,6 +11,15 @@
        class="login-button">
         ログイン
     </a>
+
+    <form th:if="${session.loginUser != null}"
+          th:action="@{/logout}"
+          method="post">
+        <button type="submit"
+                class="logout-button">
+            ログアウト
+        </button>
+    </form>
 </header>
 
 </body>
