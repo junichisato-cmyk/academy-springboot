@@ -1,7 +1,10 @@
 package com.spring.springbootapplication.service;
 
+import java.io.IOException;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.springbootapplication.dto.UserRegistrationRequest;
 import com.spring.springbootapplication.entity.User;
@@ -47,5 +50,31 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public User findById(Long id) {
+        return userMapper.findById(id);
+    }
+
+    public User updateProfile(
+            Long id,
+            String introduction,
+            MultipartFile profileImage) throws IOException {
+
+        if (profileImage == null || profileImage.isEmpty()) {
+            userMapper.updateIntroduction(
+                id,
+                introduction
+            );
+        } else {
+            userMapper.updateProfile(
+                id,
+                introduction,
+                profileImage.getBytes(),
+                profileImage.getContentType()
+            );
+        }
+
+        return userMapper.findById(id);
     }
 }

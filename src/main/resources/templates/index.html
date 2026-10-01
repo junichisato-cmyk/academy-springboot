@@ -23,7 +23,16 @@
         <div class="top-wrapper">
             <section class="profile">
                 <div class="profile-avatar">
-                    <div class="profile-avatar-placeholder"></div>
+
+                    <img
+                        th:if="${session.loginUser.profileImage != null}"
+                        th:src="@{/profile/image}"
+                        alt="プロフィール画像">
+
+                    <div
+                        th:unless="${session.loginUser.profileImage != null}"
+                        class="profile-avatar-placeholder">
+                    </div>
 
                     <p
                         class="profile-name"
@@ -37,11 +46,16 @@
                         <hr class="profile-title-line">
                     </div>
 
-                    <p class="profile-text"></p>
+                    <p
+                        class="profile-text"
+                        th:text="${session.loginUser.introduction}">
+                    </p>
 
-                    <button type="button" class="profile-edit-button">
+                    <a
+                        th:href="@{/profile/edit}"
+                        class="profile-edit-button">
                         自己紹介を編集する
-                    </button>
+                    </a>
                 </div>
             </section>
         </div>
